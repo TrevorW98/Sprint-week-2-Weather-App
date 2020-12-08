@@ -1,34 +1,34 @@
 //api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 let url_pt1 = "http://api.openweathermap.org/data/2.5/weather?q=";
-let cityInput = document.getElementById("cityInput");
+let url5Day = "http://api.openweathermap.org/data/2.5/forecast?q=";
+let cityInput = "stockton";
 let apikey = "&appid=3bdbeade6189c91354f9f969824f70b6";
 
-let weatherData = [];
 
-function loadWeather(url){
+function loadWeather(url,url5Day){
+    // let cityInput = document.getElementById("cityInput").value;
     fetch(url).then(
-        response => response.json()
-    ).then (data => {
-        console.log(data);
-        //This is where you fetch your data
-        console.log(data.name);
-        //pulls the name of the city
-        // console.log(data.main.feels_like)
-        weatherData.push(data.main.feels_like);
-        weatherData.push(data.main.humidity);
-        weatherData.push(data.main.pressure);
-        weatherData.push(data.main.temp);
-        weatherData.push(data.main.temp_max);
-        weatherData.push(data.main.temp_min);
-        //console.log(feels_like);
+        current => current.json()
+    ).then (weatherData => {
+        console.log(weatherData);
+        console.log(weatherData.name);
+        console.log(weatherData.main.temp);
+        //This converts kelvin to farenheit with no decimal places
+        console.log(Math.floor(((weatherData.main.temp-273.15)*1.8)+32));
+     
+    })
+
+    fetch(url5Day).then(
+        current => current.json()
+    ).then (weatherData => {
+         console.log(weatherData);
+    
     })
 }
 
 // call the function
-loadWeather(url_pt1+city+apikey);
+loadWeather(url_pt1+cityInput+apikey, url5Day + cityInput + apikey);
 
-function showFeels(){
-    console.log(weatherData);
+function citySearch(){
+    let cityInput = document.getElementById("cityInput").value;
 }
-
-showFeels();

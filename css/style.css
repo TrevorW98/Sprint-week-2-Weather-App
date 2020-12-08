@@ -22,13 +22,26 @@
 .dropdown-toggle::after { border: none; }
 
 .jumboBG{
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.25);
 }
 .noPadding{
     padding: 0;
     margin: 0;
 }
 .fiveDayFont{
+    font-size: 25px;
+}
+.cityName{
     font-size: 30px;
-    font-style: bold;
+}
+.tempNum{
+    font-size: 50px;
+}
+.minTemp{
+    color: rgb(0, 110, 255);
+    font-size: 20px;
+}
+.maxTemp{
+    color: rgb(204, 15, 15);
+    font-size: 20px;
 }
