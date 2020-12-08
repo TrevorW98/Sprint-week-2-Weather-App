@@ -1,0 +1,34 @@
+.bodyBG{
+    background-image: url(../images/pmario.jpg);
+    width: 100%;
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+.btnBG{
+    background-color: #BAFFC3;
+}
+.btnSize{
+    width:100%;
+    display:block;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+.spacing{
+    display: flex;
+    justify-content: space-between;
+}
+.dropdown-toggle::after { border: none; }
+
+.jumboBG{
+    background: rgba(255, 255, 255, 0.35);
+}
+.noPadding{
+    padding: 0;
+    margin: 0;
+}
+.fiveDayFont{
+    font-size: 30px;
+    font-style: bold;
+}
