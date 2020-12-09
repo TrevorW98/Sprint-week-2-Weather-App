@@ -1,3 +1,9 @@
+/* Trevor Womack
+12/08/2020
+Sprint Week 2 Day 2
+This code is the front end development of the prototype created by Adrian Segura.
+on this page, you can type in a city in the search bar, push search, and data for that city 
+will populate the console.  */
 .bodyBG{
     background-image: url(../images/pmario.jpg);
     width: 100%;
