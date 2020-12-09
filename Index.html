@@ -29,7 +29,8 @@ will populate the console. The data is labeled and sorted. -->
           <div class="col-12">
             <form>
               <div class="form-group">
-                <input type="search" id="cityInput" class="form-control rounded-0" aria-describedby="searchCity" placeholder="Search Location:">
+                <input type="search" id="cityInput" class="form-control rounded-0" aria-describedby="searchCity"
+                  placeholder="Search Location:">
               </div>
             </form>
           </div>
@@ -41,57 +42,63 @@ will populate the console. The data is labeled and sorted. -->
         </div>
       </div>
       <div class="col-4">
-          <div class="container jumboBG">
-            <div class="row">
-              <div class="col-11 center">
-                <b class="cityName ml-5">Stockton, CA</b>
-              </div>
-              <div class="col-1 center mt-5">
-                <i class="fas fa-plus-circle"></i>
-              </div>
+        <div class="container jumboBG">
+          <div class="row">
+            <div class="col-11 center">
+              <b class="cityName ml-5" id="currentLocation">Stockton, CA</b>
             </div>
-            <div class="row">
-              <div class="col-12">
-                <p class="text-center">Monday, December 7th, 2020</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 center">
-                <b class="tempNum">70°F</b>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 center">
-                <p class="tempNum"><i class="fas fa-smog"></i></p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4 center">
-                <p class="fiveDayFont">AM</p>
-              </div>
-              <div class="col-4 center">
-                <p class="fiveDayFont">Noon</p>
-              </div>
-              <div class="col-4 center">
-               <p class="fiveDayFont">PM</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4 center">
-                <p class="fiveDayFont">40°F</p>
-              </div>
-              <div class="col-4 center">
-                <p class="fiveDayFont">55°F</p>
-              </div>
-              <div class="col-4 center">
-                <p class="fiveDayFont">60°F</p>
-              </div>
+            <div class="col-1 center mt-5">
+              <i class="fas fa-plus-circle"></i>
             </div>
           </div>
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center" id="currentDate">Monday, December 7th, 2020</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 center">
+              <b class="tempNum" id="currentTemp">70°F</b>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 center">
+              <p class="tempNum"><i class="fas fa-smog"></i></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 center">
+              <p id="currentDayDesc">weather description here</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 center">
+              <p class="fiveDayFont">AM</p>
+            </div>
+            <div class="col-4 center">
+              <p class="fiveDayFont">Noon</p>
+            </div>
+            <div class="col-4 center">
+              <p class="fiveDayFont">PM</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 center">
+              <p class="fiveDayFont" id="currentDayMorn">40°F</p>
+            </div>
+            <div class="col-4 center">
+              <p class="fiveDayFont" id="currentDayNoon">55°F</p>
+            </div>
+            <div class="col-4 center">
+              <p class="fiveDayFont" id="currentDayNight">60°F</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-3 ml-5">
         <div class="dropdown">
-          <button class="btn btnBG btnSize dropdown-toggle btn-fluid rounded-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btnBG btnSize dropdown-toggle btn-fluid rounded-0" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Favorites <i class="fas fa-angle-double-down"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -105,93 +112,110 @@ will populate the console. The data is labeled and sorted. -->
   </div>
   <div class="container mt-5">
     <div class="row center">
-     <div class="col-8 btnBG">
-       <div class="row spacing">
-         <div class="col-2 text-center fiveDayFont">
-          <p>TUE</p>
-         </div>
-         <div class="col-2 text-center fiveDayFont">
-          <p>WED</p>
-         </div>
-         <div class="col-2 text-center fiveDayFont">
-          <p>THUR</p>
-         </div>
-         <div class="col-2 text-center fiveDayFont">
-          <p>FRI</p>
-         </div>
-         <div class="col-2 text-center fiveDayFont">
-          <p>SAT</p>
-         </div>
-       </div>
-       <div class="row spacing">
-        <div class="col-2 text-center fiveDayFont">
-          <p>12/8</p>
+      <div class="col-8 btnBG">
+        <div class="row spacing">
+          <div class="col-2 text-center fiveDayFont">
+            <p>TUE</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>WED</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>THUR</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>FRI</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>SAT</p>
+          </div>
         </div>
-        <div class="col-2 text-center fiveDayFont">
-          <p>12/9</p>
+        <div class="row spacing">
+          <div class="col-2 text-center fiveDayFont">
+            <p>12/8</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>12/9</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>12/10</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>12/11</p>
+          </div>
+          <div class="col-2 text-center fiveDayFont">
+            <p>12/12</p>
+          </div>
         </div>
-        <div class="col-2 text-center fiveDayFont">
-          <p>12/10</p>
+        <div class="row spacing">
+          <div class="col-2 text-center">
+            <p class="fiveDayFont"><i class="fas fa-cloud"></i></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="fiveDayFont"><i class="fas fa-cloud-sun"></i></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="fiveDayFont"><i class="fas fa-cloud-showers-heavy"></i></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="fiveDayFont"><i class="fas fa-sun"></i></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="fiveDayFont"><i class="fas fa-smog"></i></p>
+          </div>
         </div>
-        <div class="col-2 text-center fiveDayFont">
-          <p>12/11</p>
+        <div class="row spacing">
+          <div class="col-2 text-center">
+            <p class="minTemp">AM: <p id="day1AmTemp"> </p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="minTemp">AM: <p id="day2AmTemp"> </p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="minTemp">AM: <p id="day3AmTemp"> </p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="minTemp">AM: <p id="day4AmTemp"></p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="minTemp">AM: <p id="day5AmTemp"></p></p>
+          </div>
         </div>
-        <div class="col-2 text-center fiveDayFont">
-          <p>12/12</p>
+        <div class="row spacing">
+          <div class="col-2 text-center">
+            <p class="maxTemp">Noon: <p id="day1NoonTemp"></p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">Noon: <p id="day2NoonTemp"></p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">Noon: <p id="day3NoonTemp"></p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">Noon: <p id="day4NoonTemp"></p></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">Noon: <p id="day5NoonTemp"></p></p>
+          </div>
         </div>
-       </div>
-       <div class="row spacing">
-        <div class="col-2 text-center">
-          <p class="fiveDayFont"><i class="fas fa-cloud"></i></p>
+        <div class="row spacing">
+          <div class="col-2 text-center">
+            <p class="maxTemp">PM: 65°F</p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">PM: 65°F</p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">PM: 65°F</p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">PM: 65°F</p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp">PM: 65°F</p>
+          </div>
         </div>
-        <div class="col-2 text-center">
-          <p class="fiveDayFont"><i class="fas fa-cloud-sun"></i></p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="fiveDayFont"><i class="fas fa-cloud-showers-heavy"></i></p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="fiveDayFont"><i class="fas fa-sun"></i></p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="fiveDayFont"><i class="fas fa-smog"></i></p>
-        </div>
-       </div>
-       <div class="row spacing">
-         <div class="col-2 text-center">
-          <p class="minTemp">L: 35°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="minTemp">L: 65°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="minTemp">L: 35°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="minTemp">L: 35°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="minTemp">L: 35°F</p>
-        </div>
-       </div>
-       <div class="row spacing">
-        <div class="col-2 text-center">
-          <p class="maxTemp">H: 65°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="maxTemp">H: 65°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="maxTemp">H: 65°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="maxTemp">H: 65°F</p>
-        </div>
-        <div class="col-2 text-center">
-          <p class="maxTemp">H: 65°F</p>
-        </div>
-       </div>
-     </div>
+      </div>
     </div>
   </div>
 
