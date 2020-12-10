@@ -5,9 +5,6 @@
 // on this page, you can type in a city in the search bar, push search, and data for that city 
 // will populate the console. 
 
-
-
-//api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 let url_pt1 = "http://api.openweathermap.org/data/2.5/weather?q=";
 let url5Day = "http://api.openweathermap.org/data/2.5/forecast?q=";
 let apikey = "&appid=3bdbeade6189c91354f9f969824f70b6";
@@ -66,6 +63,7 @@ let day5Icon = document.getElementById("day5Icon");
 
 loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
 
+onLoad();
 
 
 function loadWeather(url, url5Day) {
@@ -77,140 +75,119 @@ function loadWeather(url, url5Day) {
         getLatLon(weatherData.coord.lat, weatherData.coord.lon);
         currentLocation.innerText = weatherData.name + ", " + weatherData.sys.country;
     });
-
-    // fetch(url5Day).then(
-    //     current => current.json()
-    // ).then(weatherData => {
-    //     console.log("This data is coming from the 5 day forecast", weatherData);
-    //     getLatLon(weatherData.city.coord.lat, weatherData.city.coord.lon);
-    // });
 }
-
-
 
 //This function calls the OneCal API with the coordinates from the first pull
 function getLatLon(lat, lon) {
     let urlOneCall_pt1 = "https://api.openweathermap.org/data/2.5/onecall?";
     let latLon = "lat=" + lat + "&lon=" + lon;
     let properUnit = "&units=imperial";
-    
+
     loadOneCall(urlOneCall_pt1 + latLon + properUnit + apikey);
 
     async function loadOneCall(url) {
         let oneCall = await fetch(url);
         let oneCallData = await oneCall.json();
         console.log(oneCallData);
-        currentTemp.innerText = oneCallData.current.temp;
-        currentDayMorn.innerText = oneCallData.daily[0].temp.morn;
-        currentDayNoon.innerText = oneCallData.daily[0].temp.eve;
-        currentDayNight.innerText = oneCallData.daily[0].temp.night;
+        currentTemp.innerText = Math.trunc(oneCallData.current.temp) + "°F";
+        currentDayMorn.innerText = Math.trunc(oneCallData.daily[0].temp.morn) + "°F";
+        currentDayNoon.innerText = Math.trunc(oneCallData.daily[0].temp.eve) + "°F";
+        currentDayNight.innerText = Math.trunc(oneCallData.daily[0].temp.night) + "°F";
         currentDayDesc.innerText = oneCallData.current.weather[0].main;
+        let mycurrentDate = new Date(oneCallData.current.dt * 1000);
+        currentDate.innerText = mycurrentDate.toDateString();
+        // document.write(myDate.toGMTString()+"<br>"+myDate.toLocaleString());
         //currentIcon.innerText = weatherData.current.weather[0].icon;
         //figure out how to do icons and date conversions
-        day1AmTemp.innerText = oneCallData.daily[1].temp.morn;
-        day1NoonTemp.innerText = oneCallData.daily[1].temp.eve;
-        day1PmTemp.innerText = oneCallData.daily[1].temp.night;
+        day1AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[1].temp.morn) + "°F";
+        day1NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[1].temp.eve) + "°F";
+        day1PmTemp.innerText = "PM: " + Math.trunc(oneCallData.daily[1].temp.night) + "°F";
         day1Desc.innerText = oneCallData.daily[1].weather[0].main;
-    
-        day2AmTemp.innerText = oneCallData.daily[2].temp.morn;
-        day2NoonTemp.innerText = oneCallData.daily[2].temp.eve;
-        day2PmTemp.innerText = oneCallData.daily[2].temp.night;
+        let my1Date = new Date(oneCallData.daily[1].dt * 1000);
+        day1Date.innerText = my1Date.getMonth() + 1 + "/" + my1Date.getDate();
+
+        day2AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[2].temp.morn) + "°F";
+        day2NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[2].temp.eve) + "°F";
+        day2PmTemp.innerText = "PM: " + Math.trunc(oneCallData.daily[2].temp.night) + "°F";
         day2Desc.innerText = oneCallData.daily[2].weather[0].main;
-    
-        day3AmTemp.innerText = oneCallData.daily[3].temp.morn;
-        day3NoonTemp.innerText = oneCallData.daily[3].temp.eve;
-        day3PmTemp.innerText = oneCallData.daily[3].temp.night;
+        let my2Date = new Date(oneCallData.daily[2].dt * 1000);
+        day2Date.innerText = my2Date.getMonth() + 1 + "/" + my2Date.getDate();
+
+        day3AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[3].temp.morn) + "°F";
+        day3NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[3].temp.eve) + "°F";
+        day3PmTemp.innerText = "PM: " + Math.trunc(oneCallData.daily[3].temp.night) + "°F";
         day3Desc.innerText = oneCallData.daily[3].weather[0].main;
-    
-        day4AmTemp.innerText = oneCallData.daily[4].temp.morn;
-        day4NoonTemp.innerText = oneCallData.daily[4].temp.eve;
-        day4PmTemp.innerText = oneCallData.daily[4].temp.night;
+        let my3Date = new Date(oneCallData.daily[3].dt * 1000);
+        day3Date.innerText = my3Date.getMonth() + 1 + "/" + my3Date.getDate();
+
+        day4AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[4].temp.morn) + "°F";
+        day4NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[4].temp.eve) + "°F";
+        day4PmTemp.innerText = "PM: " + Math.trunc(oneCallData.daily[4].temp.night) + "°F";
         day4Desc.innerText = oneCallData.daily[4].weather[0].main;
-    
-        day5AmTemp.innerText = oneCallData.daily[5].temp.morn;
-        day5NoonTemp.innerText = oneCallData.daily[5].temp.eve;
-        day5PmTemp.innerText = oneCallData.daily[5].temp.night;
+        let my4Date = new Date(oneCallData.daily[4].dt * 1000);
+        day4Date.innerText = my4Date.getMonth() + 1 + "/" + my4Date.getDate();
+
+        day5AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[5].temp.morn) + "°F";
+        day5NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[5].temp.eve) + "°F";
+        day5PmTemp.innerText = "PM: " + Math.trunc(oneCallData.daily[5].temp.night) + "°F";
         day5Desc.innerText = oneCallData.daily[5].weather[0].main;
+        let my5Date = new Date(oneCallData.daily[5].dt * 1000);
+        day5Date.innerText = my5Date.getMonth() + 1 + "/" + my5Date.getDate();
     }
 }
 
-
-
-
 function searchCity() {
     cityInput = document.getElementById("cityInput").value;
-    loadWeather(url_pt1 + cityInput + apikey, url5Day + cityInput + apikey);
+    loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
 }
-
-
 
 //calls the function to load the entered location
 search.addEventListener("click", function () {
     searchCity();
 })
 
-
-
 //saves the location to local storage
-function saveCityToLS() {
-    localStorage.setItem("favoritesList", JSON.stringify(favoritesList));
+function saveCityLS() {
+    localStorage.setItem("favoritesArr", JSON.stringify(favoritesArr));
 }
-
-
 
 //saves the location to the array of saved locations
-function addCityToFavorites(cityInput) {
+function addCityToFavorites() {
     favoritesArr.push(cityInput);
+
 }
 
+save.addEventListener("click", function () {
+    addCityToFavorites();
+    saveCityLS(cityInput.value);
+})
 
-// function populateFromCurrent(){
-//     currentLocation.innerText = weatherData.name + ", " + weatherData.sys.country;
-// }
+function onLoad() {
+    let savedItems = JSON.parse(localStorage.getItem("favoritesArr"));
+    console.log(savedItems);
+    if (savedItems != null) {
+        
+    }
+    else {
+      
+    }
+}
 
-// function populateFromLatLon(){
-//     currentTemp.innerText = weatherData.current.temp;
-//     currentDayMorn.innerText = oneCallData.daily[0].temp.morn;
-//     currentDayNoon.innerText = oneCallData.daily[0].temp.eve;
-//     currentDayNight.innerText = oneCallData.daily[0].temp.night;
-//     currentDayDesc.innerText = weatherData.current.weather[0].main;
-//     //currentIcon.innerText = weatherData.current.weather[0].icon;
-//     //figure out how to do icons and date conversions
-//     day1AmTemp.innerText = oneCallData.daily[1].temp.morn;
-//     day1NoonTemp.innerText = oneCallData.daily[1].temp.eve;
-//     day1PmTemp.innerText = oneCallData.daily[1].temp.night;
-//     day1Desc.innerText = oneCallData.daily[1].weather[0].main;
+function createListFavs(cityInput) {
+    let favBtn = document.createElement("button");
+    //add classes here
+    favBtn.innerText = savedItems[i];
+    favBtn.addEventListener("click", function(){
+        cityInput = favBtn.innerText;
+        loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
+    });
 
-//     day2AmTemp.innerText = oneCallData.daily[2].temp.morn;
-//     day2NoonTemp.innerText = oneCallData.daily[2].temp.eve;
-//     day2PmTemp.innerText = oneCallData.daily[2].temp.night;
-//     day2Desc.innerText = oneCallData.daily[2].weather[0].main;
+    let trash = document.createElement("button");
+    trash.classList.add("fas", "fa-trash-alt");
+    trash.addEventListener("click", function(){
 
-//     day3AmTemp.innerText = oneCallData.daily[3].temp.morn;
-//     day3NoonTemp.innerText = oneCallData.daily[3].temp.eve;
-//     day3PmTemp.innerText = oneCallData.daily[3].temp.night;
-//     day3Desc.innerText = oneCallData.daily[3].weather[0].main;
+    });
 
-//     day4AmTemp.innerText = oneCallData.daily[4].temp.morn;
-//     day4NoonTemp.innerText = oneCallData.daily[4].temp.eve;
-//     day4PmTemp.innerText = oneCallData.daily[4].temp.night;
-//     day4Desc.innerText = oneCallData.daily[4].weather[0].main;
-
-//     day5AmTemp.innerText = oneCallData.daily[5].temp.morn;
-//     day5NoonTemp.innerText = oneCallData.daily[5].temp.eve;
-//     day5PmTemp.innerText = oneCallData.daily[5].temp.night;
-//     day5Desc.innerText = oneCallData.daily[5].weather[0].main;
-// }
-
-// function onLoad(){
-//     let savedCity = JSON.parse(localStorage.getItem("favoritesList"));
-//     console.log(savedCity);
-//     if(savedCity)
-// }
-
-// onLoad();
-
-// save.addEventListener("click", ()=>{
-//     saveCityToLS(currentLocation.value);
-//     LSList.innerText = currentLocation.value;
-// })
+    favBtn.appendChild(trash);
+    LSList.appendChild(favBtn);
+}
