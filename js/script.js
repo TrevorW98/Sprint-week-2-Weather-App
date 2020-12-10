@@ -15,6 +15,7 @@ let cityInput = "stockton";
 let save = document.getElementById("save");
 
 let favoritesArr = [];
+let cityArr = [];
 let LSList = document.getElementById("LSList");
 
 let currentLocation = document.getElementById("currentLocation");
@@ -63,7 +64,7 @@ let day5Icon = document.getElementById("day5Icon");
 
 loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
 
-onLoad();
+createListFavs();
 
 
 function loadWeather(url, url5Day) {
@@ -148,35 +149,56 @@ search.addEventListener("click", function () {
 
 //saves the location to local storage
 function saveCityLS() {
+    console.log(favoritesArr);
     localStorage.setItem("favoritesArr", JSON.stringify(favoritesArr));
 }
 
 //saves the location to the array of saved locations
 function addCityToFavorites() {
+  
     favoritesArr.push(cityInput);
-
 }
 
 save.addEventListener("click", function () {
     addCityToFavorites();
-    saveCityLS(cityInput.value);
+    console.log(favoritesArr);
+    setTimeout(function(){
+        saveCityLS(); 
+    }, 1000)
+    createListFavs();
 })
 
 function onLoad() {
-    let savedItems = JSON.parse(localStorage.getItem("favoritesArr"));
-    console.log(savedItems);
-    if (savedItems != null) {
+    let savedCities = JSON.parse(localStorage.getItem("favoritesArr"));
+    console.log(savedCities);
+    if (savedCities != null) {
+        cityArr = savedCities;
+        for( let i = 0; i< cityArr; i++){
+            let favBtn = document.createElement("button");
+            //add classes here
+            favBtn.innerText = cityArr[i];
+            favBtn.addEventListener("click", function(){
+                cityInput = favBtn.innerText;
+                loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
+            });
         
-    }
-    else {
-      
+            let trash = document.createElement("button");
+            trash.classList.add("fas", "fa-trash-alt");
+            trash.addEventListener("click", function(){
+        
+            });
+        
+            favBtn.appendChild(trash);
+            LSList.appendChild(favBtn);
+        }
     }
 }
 
-function createListFavs(cityInput) {
+function createListFavs() {
     let favBtn = document.createElement("button");
     //add classes here
-    favBtn.innerText = savedItems[i];
+    favBtn.classList.add("rounded-sm", "btnSpecs");
+    favBtn.innerHTML = cityInput;
     favBtn.addEventListener("click", function(){
         cityInput = favBtn.innerText;
         loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);

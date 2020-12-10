@@ -51,3 +51,10 @@ will populate the console.  */
     
     font-size: 20px;
 }
+
+.btnSpecs{
+    border-style: solid;
+    border-color: black;
+    height: 40px;
+    width: 190px;
+}
