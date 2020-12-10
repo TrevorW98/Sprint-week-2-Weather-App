@@ -44,10 +44,10 @@ will populate the console.  */
     font-size: 50px;
 }
 .minTemp{
-    color: rgb(0, 110, 255);
+    
     font-size: 20px;
 }
 .maxTemp{
-    color: rgb(204, 15, 15);
+    
     font-size: 20px;
 }

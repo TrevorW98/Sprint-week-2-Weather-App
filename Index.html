@@ -30,7 +30,7 @@ will populate the console. The data is labeled and sorted. -->
             <form>
               <div class="form-group">
                 <input type="search" id="cityInput" class="form-control rounded-0" aria-describedby="searchCity"
-                  placeholder="Search Location:">
+                  placeholder="Enter city:">
               </div>
             </form>
           </div>
@@ -63,7 +63,7 @@ will populate the console. The data is labeled and sorted. -->
           </div>
           <div class="row">
             <div class="col-12 center">
-              <p class="tempNum"><i class="fas fa-smog"></i></p>
+              <p class="tempNum" id="currentIcon"><i class="fas fa-smog"></i></p>
             </div>
           </div>
           <div class="row">
@@ -97,14 +97,16 @@ will populate the console. The data is labeled and sorted. -->
       </div>
       <div class="col-3 ml-5">
         <div class="dropdown">
-          <button class="btn btnBG btnSize dropdown-toggle btn-fluid rounded-0" type="button" id="dropdownMenuButton"
+          <button class="btn btnBG btnSize dropdown-toggle btn-fluid rounded-0" type="button" id="save"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Favorites <i class="fas fa-angle-double-down"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+           <ul>
+             <li>
+              <!-- List of favorites here -->
+             </li>
+           </ul>
           </div>
         </div>
       </div>
@@ -113,7 +115,7 @@ will populate the console. The data is labeled and sorted. -->
   <div class="container mt-5">
     <div class="row center">
       <div class="col-8 btnBG">
-        <div class="row spacing">
+        <!-- <div class="row spacing">
           <div class="col-2 text-center fiveDayFont">
             <p>TUE</p>
           </div>
@@ -129,90 +131,107 @@ will populate the console. The data is labeled and sorted. -->
           <div class="col-2 text-center fiveDayFont">
             <p>SAT</p>
           </div>
-        </div>
+        </div> -->
         <div class="row spacing">
           <div class="col-2 text-center fiveDayFont">
-            <p>12/8</p>
+            <p id="day1Date">12/8</p>
           </div>
           <div class="col-2 text-center fiveDayFont">
-            <p>12/9</p>
+            <p id="day2Date">12/9</p>
           </div>
           <div class="col-2 text-center fiveDayFont">
-            <p>12/10</p>
+            <p id="day3Date">12/10</p>
           </div>
           <div class="col-2 text-center fiveDayFont">
-            <p>12/11</p>
+            <p id="day4Date">12/11</p>
           </div>
           <div class="col-2 text-center fiveDayFont">
-            <p>12/12</p>
-          </div>
-        </div>
-        <div class="row spacing">
-          <div class="col-2 text-center">
-            <p class="fiveDayFont"><i class="fas fa-cloud"></i></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="fiveDayFont"><i class="fas fa-cloud-sun"></i></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="fiveDayFont"><i class="fas fa-cloud-showers-heavy"></i></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="fiveDayFont"><i class="fas fa-sun"></i></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="fiveDayFont"><i class="fas fa-smog"></i></p>
+            <p id="day5Date">12/12</p>
           </div>
         </div>
         <div class="row spacing">
           <div class="col-2 text-center">
-            <p class="minTemp">AM: <p id="day1AmTemp"> </p></p>
+            <p class="fiveDayFont" id="day1Icon"><i class="fas fa-cloud"></i></p>
           </div>
           <div class="col-2 text-center">
-            <p class="minTemp">AM: <p id="day2AmTemp"> </p></p>
+            <p class="fiveDayFont" id="day2Icon"><i class="fas fa-cloud-sun"></i></p>
           </div>
           <div class="col-2 text-center">
-            <p class="minTemp">AM: <p id="day3AmTemp"> </p></p>
+            <p class="fiveDayFont" id="day3Icon"><i class="fas fa-cloud-showers-heavy"></i></p>
           </div>
           <div class="col-2 text-center">
-            <p class="minTemp">AM: <p id="day4AmTemp"></p></p>
+            <p class="fiveDayFont" id="day4Icon"><i class="fas fa-sun"></i></p>
           </div>
           <div class="col-2 text-center">
-            <p class="minTemp">AM: <p id="day5AmTemp"></p></p>
-          </div>
-        </div>
-        <div class="row spacing">
-          <div class="col-2 text-center">
-            <p class="maxTemp">Noon: <p id="day1NoonTemp"></p></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="maxTemp">Noon: <p id="day2NoonTemp"></p></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="maxTemp">Noon: <p id="day3NoonTemp"></p></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="maxTemp">Noon: <p id="day4NoonTemp"></p></p>
-          </div>
-          <div class="col-2 text-center">
-            <p class="maxTemp">Noon: <p id="day5NoonTemp"></p></p>
+            <p class="fiveDayFont" id="day5Icon"><i class="fas fa-smog"></i></p>
           </div>
         </div>
         <div class="row spacing">
           <div class="col-2 text-center">
-            <p class="maxTemp">PM: 65°F</p>
+            <p class="minTemp" id="day1AmTemp"></p>
           </div>
           <div class="col-2 text-center">
-            <p class="maxTemp">PM: 65°F</p>
+            <p class="minTemp" id="day2AmTemp"></p>
           </div>
           <div class="col-2 text-center">
-            <p class="maxTemp">PM: 65°F</p>
+            <p class="minTemp" id="day3AmTemp"></p>
           </div>
           <div class="col-2 text-center">
-            <p class="maxTemp">PM: 65°F</p>
+            <p class="minTemp" id="day4AmTemp"></p>
           </div>
           <div class="col-2 text-center">
-            <p class="maxTemp">PM: 65°F</p>
+            <p class="minTemp" id="day5AmTemp"></p>
+          </div>
+        </div>
+        <div class="row spacing">
+          <div class="col-2 text-center">
+            <p class="maxTemp"id="day1NoonTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp"id="day2NoonTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp"id="day3NoonTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp"id="day4NoonTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp"id="day5NoonTemp"></p>
+          </div>
+        </div>
+        <div class="row spacing">
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day1PmTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day2PmTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day3PmTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day4PmTemp"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day5PmTemp"></p>
+          </div>
+        </div>
+        <div class="row spacing">
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day1Desc"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day2Desc"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day3Desc"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day4Desc"></p>
+          </div>
+          <div class="col-2 text-center">
+            <p class="maxTemp" id="day5Desc"></p>
           </div>
         </div>
       </div>
