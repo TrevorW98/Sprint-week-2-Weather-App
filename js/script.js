@@ -97,9 +97,9 @@ function getLatLon(lat, lon) {
         currentDayDesc.innerText = oneCallData.current.weather[0].main;
         let mycurrentDate = new Date(oneCallData.current.dt * 1000);
         currentDate.innerText = mycurrentDate.toDateString();
-        // document.write(myDate.toGMTString()+"<br>"+myDate.toLocaleString());
-        //currentIcon.innerText = weatherData.current.weather[0].icon;
+        currentIcon.classList.add = "http://openweathermap.org/img/wn/" + oneCallData.current.weather[0].icon + "@2x.png";
         //figure out how to do icons and date conversions
+
         day1AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[1].temp.morn) + "°F";
         day1NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[1].temp.eve) + "°F";
         day1PmTemp.innerText = "PM: " + Math.trunc(oneCallData.daily[1].temp.night) + "°F";
