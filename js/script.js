@@ -90,6 +90,7 @@ function getLatLon(lat, lon) {
         let oneCall = await fetch(url);
         let oneCallData = await oneCall.json();
         console.log(oneCallData);
+
         currentTemp.innerText = Math.trunc(oneCallData.current.temp) + "°F";
         currentDayMorn.innerText = Math.trunc(oneCallData.daily[0].temp.morn) + "°F";
         currentDayNoon.innerText = Math.trunc(oneCallData.daily[0].temp.eve) + "°F";
@@ -97,8 +98,8 @@ function getLatLon(lat, lon) {
         currentDayDesc.innerText = oneCallData.current.weather[0].main;
         let mycurrentDate = new Date(oneCallData.current.dt * 1000);
         currentDate.innerText = mycurrentDate.toDateString();
-        currentIcon.classList.add = "http://openweathermap.org/img/wn/" + oneCallData.current.weather[0].icon + "@2x.png";
-        //figure out how to do icons and date conversions
+        document.getElementById("currentIcon").src = "http://openweathermap.org/img/wn/" + oneCallData.current.weather[0].icon + "@2x.png";
+
 
         day1AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[1].temp.morn) + "°F";
         day1NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[1].temp.eve) + "°F";
@@ -106,6 +107,7 @@ function getLatLon(lat, lon) {
         day1Desc.innerText = oneCallData.daily[1].weather[0].main;
         let my1Date = new Date(oneCallData.daily[1].dt * 1000);
         day1Date.innerText = my1Date.getMonth() + 1 + "/" + my1Date.getDate();
+        document.getElementById("day1Icon").src = "http://openweathermap.org/img/wn/" + oneCallData.daily[1].weather[0].icon + "@2x.png";
 
         day2AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[2].temp.morn) + "°F";
         day2NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[2].temp.eve) + "°F";
@@ -113,6 +115,7 @@ function getLatLon(lat, lon) {
         day2Desc.innerText = oneCallData.daily[2].weather[0].main;
         let my2Date = new Date(oneCallData.daily[2].dt * 1000);
         day2Date.innerText = my2Date.getMonth() + 1 + "/" + my2Date.getDate();
+        document.getElementById("day2Icon").src = "http://openweathermap.org/img/wn/" + oneCallData.daily[2].weather[0].icon + "@2x.png";
 
         day3AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[3].temp.morn) + "°F";
         day3NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[3].temp.eve) + "°F";
@@ -120,6 +123,7 @@ function getLatLon(lat, lon) {
         day3Desc.innerText = oneCallData.daily[3].weather[0].main;
         let my3Date = new Date(oneCallData.daily[3].dt * 1000);
         day3Date.innerText = my3Date.getMonth() + 1 + "/" + my3Date.getDate();
+        document.getElementById("day3Icon").src = "http://openweathermap.org/img/wn/" + oneCallData.daily[3].weather[0].icon + "@2x.png";
 
         day4AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[4].temp.morn) + "°F";
         day4NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[4].temp.eve) + "°F";
@@ -127,6 +131,7 @@ function getLatLon(lat, lon) {
         day4Desc.innerText = oneCallData.daily[4].weather[0].main;
         let my4Date = new Date(oneCallData.daily[4].dt * 1000);
         day4Date.innerText = my4Date.getMonth() + 1 + "/" + my4Date.getDate();
+        document.getElementById("day4Icon").src = "http://openweathermap.org/img/wn/" + oneCallData.daily[4].weather[0].icon + "@2x.png";
 
         day5AmTemp.innerText = "AM: " + Math.trunc(oneCallData.daily[5].temp.morn) + "°F";
         day5NoonTemp.innerText = "Eve: " + Math.trunc(oneCallData.daily[5].temp.eve) + "°F";
@@ -134,6 +139,7 @@ function getLatLon(lat, lon) {
         day5Desc.innerText = oneCallData.daily[5].weather[0].main;
         let my5Date = new Date(oneCallData.daily[5].dt * 1000);
         day5Date.innerText = my5Date.getMonth() + 1 + "/" + my5Date.getDate();
+        document.getElementById("day5Icon").src = "http://openweathermap.org/img/wn/" + oneCallData.daily[5].weather[0].icon + "@2x.png";
     }
 }
 
@@ -167,7 +173,7 @@ save.addEventListener("click", function () {
     createListFavs();
 })
 
-//This loads the
+//This loads the favorites list on start
 function onLoad() {
     let savedCities = JSON.parse(localStorage.getItem("favoritesArr"));
     console.log(savedCities);
@@ -201,6 +207,8 @@ function onLoad() {
     }
 }
 
+//this loads the list of faves on save and deletes on trash click
+//Christy was the main inspiration for this chunk of code, of which i used to develop my onLoad() function
 function createListFavs() {
     let favBtn = document.createElement("button");
     //add classes here
