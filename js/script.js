@@ -64,7 +64,7 @@ let day5Icon = document.getElementById("day5Icon");
 
 loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
 
-createListFavs();
+onLoad();
 
 
 function loadWeather(url, url5Day) {
@@ -149,45 +149,52 @@ search.addEventListener("click", function () {
 
 //saves the location to local storage
 function saveCityLS() {
-    console.log(favoritesArr);
     localStorage.setItem("favoritesArr", JSON.stringify(favoritesArr));
 }
 
 //saves the location to the array of saved locations
 function addCityToFavorites() {
-  
+
     favoritesArr.push(cityInput);
 }
 
 save.addEventListener("click", function () {
     addCityToFavorites();
     console.log(favoritesArr);
-    setTimeout(function(){
-        saveCityLS(); 
+    setTimeout(function () {
+        saveCityLS();
     }, 1000)
     createListFavs();
 })
 
+//This loads the
 function onLoad() {
     let savedCities = JSON.parse(localStorage.getItem("favoritesArr"));
     console.log(savedCities);
     if (savedCities != null) {
         cityArr = savedCities;
-        for( let i = 0; i< cityArr; i++){
+        for (let i = 0; i < cityArr.length; i++) {
             let favBtn = document.createElement("button");
             //add classes here
-            favBtn.innerText = cityArr[i];
-            favBtn.addEventListener("click", function(){
+            favBtn.classList.add("rounded-sm", "btnSpecs");
+            favBtn.innerHTML = cityArr[i];
+            favBtn.addEventListener("click", function () {
                 cityInput = favBtn.innerText;
                 loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
             });
-        
+
             let trash = document.createElement("button");
-            trash.classList.add("fas", "fa-trash-alt");
-            trash.addEventListener("click", function(){
-        
+            trash.classList.add("fas", "fa-trash-alt", "trashSpecs");
+
+            trash.addEventListener("click", function () {
+                let locationValue = cityArr.indexOf(cityInput);
+                cityArr.splice(locationValue, 1);
+                localStorage.setItem("favoritesArr", JSON.stringify(favoritesArr));
+                favBtn.remove();
+                this.parentElement.remove();
+
             });
-        
+
             favBtn.appendChild(trash);
             LSList.appendChild(favBtn);
         }
@@ -199,15 +206,19 @@ function createListFavs() {
     //add classes here
     favBtn.classList.add("rounded-sm", "btnSpecs");
     favBtn.innerHTML = cityInput;
-    favBtn.addEventListener("click", function(){
+    favBtn.addEventListener("click", function () {
         cityInput = favBtn.innerText;
         loadWeather(url_pt1 + cityInput + imperial + apikey, url5Day + cityInput + imperial + apikey);
     });
 
     let trash = document.createElement("button");
-    trash.classList.add("fas", "fa-trash-alt");
-    trash.addEventListener("click", function(){
-
+    trash.classList.add("fas", "fa-trash-alt", "trashSpecs");
+    trash.addEventListener("click", function () {
+        let locationValue = cityArr.indexOf(cityInput);
+        cityArr.splice(locationValue, 1);
+        localStorage.setItem("favoritesArr", JSON.stringify(favoritesArr));
+        favBtn.remove();
+        this.parentElement.remove();
     });
 
     favBtn.appendChild(trash);

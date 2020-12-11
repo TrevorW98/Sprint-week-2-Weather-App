@@ -53,8 +53,12 @@ will populate the console.  */
 }
 
 .btnSpecs{
-    border-style: solid;
-    border-color: black;
+    border: 2px solid black;
     height: 40px;
-    width: 190px;
+    width: 290px;
+    margin-right: 1px;
+}
+.trashSpecs{
+    
+    border: none;
 }
